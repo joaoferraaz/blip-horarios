@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Blip - Preencher Horários de Atendimento (via Google Sheets)
-// @namespace    https://github.com/joaog/blip-horarios
-// @version      2.3.0
+// @namespace    https://github.com/joaoferraaz/blip-horarios
+// @version      1.0.0
 // @description  Lê uma planilha do Google Sheets (Fila / Horario / Atendentes) e preenche automaticamente os campos da tela "Horários de atendimento" do Blip.
-// @author       joaog
+// @author       João Victor Ferraz
 // @match        https://*.blip.ai/*
 // @match        https://*.msging.net/*
 // @grant        GM_xmlhttpRequest
@@ -182,7 +182,7 @@
 
   // 3) PREENCHIMENTO DOS CAMPOS DO BLIP
 
-  // Define valor em inputs controlados por React (usa o setter nativo + dispara os eventos).
+  // Define valor em inputs controlados por React.
   function setReactValue(el, value) {
     // respeita o maxlength do campo (senão o Blip rejeita ao salvar)
     let max = el.maxLength;
@@ -230,7 +230,7 @@
     return res;
   }
 
-  // Elemento MAIS INTERNO cujo texto é exatamente igual ao procurado (inclui bds-typo, texto no light DOM)
+  // Elemento MAIS INTERNO cujo texto é exatamente igual ao procurado
   function acharElementoMaisInterno(texto) {
     const els = [...document.querySelectorAll('*')];
     for (const e of els) {
@@ -266,7 +266,6 @@
     });
   }
 
-  // Clique "real": alguns web components só reagem à sequência completa de eventos de mouse
   function realClick(el) {
     try {
       el.scrollIntoView({ block: 'center' });
